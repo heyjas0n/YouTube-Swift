@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B143D4E1DE83760007CD15C /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B143D4D1DE83760007CD15C /* Video.swift */; };
+		0B143D501DE85919007CD15C /* SettingsLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B143D4F1DE85919007CD15C /* SettingsLauncher.swift */; };
 		0B35229A1DE7EE6E00ECA93D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3522991DE7EE6E00ECA93D /* AppDelegate.swift */; };
 		0B35229C1DE7EE6E00ECA93D /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35229B1DE7EE6E00ECA93D /* HomeController.swift */; };
 		0B3522A11DE7EE6E00ECA93D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B3522A01DE7EE6E00ECA93D /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		0B143D4D1DE83760007CD15C /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		0B143D4F1DE85919007CD15C /* SettingsLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsLauncher.swift; sourceTree = "<group>"; };
 		0B3522961DE7EE6E00ECA93D /* YouTube-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YouTube-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B3522991DE7EE6E00ECA93D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B35229B1DE7EE6E00ECA93D /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				0B35229B1DE7EE6E00ECA93D /* HomeController.swift */,
+				0B143D4F1DE85919007CD15C /* SettingsLauncher.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				0B35229C1DE7EE6E00ECA93D /* HomeController.swift in Sources */,
 				0B143D4E1DE83760007CD15C /* Video.swift in Sources */,
 				0B5942511DE821C60004B582 /* VideoCell.swift in Sources */,
+				0B143D501DE85919007CD15C /* SettingsLauncher.swift in Sources */,
 				0B59424E1DE821620004B582 /* Extensions.swift in Sources */,
 				0B35229A1DE7EE6E00ECA93D /* AppDelegate.swift in Sources */,
 				0B5942541DE8240D0004B582 /* MenuBar.swift in Sources */,
