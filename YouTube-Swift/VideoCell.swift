@@ -29,7 +29,9 @@ class VideoCell: BaseCell {
         didSet {
             titleLabel.text = video?.title
             
-            thumbNailImageView.image = UIImage(named: (video?.thumbnailImageName)!)
+            
+            setupThumbnailImage()
+            // thumbNailImageView.image = UIImage(named: (video?.thumbnailImageName)!)
             
             // wrap this in the if let thing so the app doesn't crash if any of the objects are nil
             if let profileImageName = video?.channel?.profileImageName {
@@ -60,6 +62,39 @@ class VideoCell: BaseCell {
                 }
                 
             }
+        }
+    }
+    
+    func setupThumbnailImage() {
+        if let thumbnailImageUrl = video?.thumbnailImageName {
+            
+            // Set up the URL request
+            guard let url = URL(string: thumbnailImageUrl) else {
+                print("Error: cannot create URL")
+                return
+            }
+            let urlRequest = URLRequest(url: url)
+            
+            // set up the session
+            let config = URLSessionConfiguration.default
+            let session = URLSession(configuration: config)
+            
+            // make the request
+            let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
+                
+                if error != nil {
+                    print(error as Any)
+                    return
+                }
+                
+                self.thumbNailImageView.image = UIImage(data: data!)
+                
+                let str = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+                print(str as Any)
+            })
+            
+            task.resume()
+            
         }
     }
     
