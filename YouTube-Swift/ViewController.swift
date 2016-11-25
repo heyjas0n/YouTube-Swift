@@ -8,19 +8,14 @@
 
 import UIKit
 
-class HomeController: UIViewController {
+class HomeController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        view.backgroundColor = UIColor.red
+        
+        navigationItem.title = "Home"
+        collectionView?.backgroundColor = UIColor.white
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 
