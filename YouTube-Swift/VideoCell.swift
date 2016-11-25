@@ -25,6 +25,30 @@ class BaseCell: UICollectionViewCell {
 
 class VideoCell: BaseCell {
     
+    var video: Video? {
+        didSet {
+            titleLabel.text = video?.title
+            
+            thumbNailImageView.image = UIImage(named: (video?.thumbnailImageName)!)
+            
+            // wrap this in the if let thing so the app doesn't crash if any of the objects are nil
+            if let profileImageName = video?.channel?.profileImageName {
+                userProfileImageView.image = UIImage(named: profileImageName)
+                
+            }
+            
+            if let channelName = video?.channel?.name, let numberOfViews = video?.numberOfViews {
+                
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                
+                let subtitleText = "\(channelName) • \(numberFormatter.string(from: numberOfViews)!) • 2 years ago "
+                
+                subtitleTextView.text = subtitleText
+            }
+        }
+    }
+    
     let thumbNailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "taylor_swift_blank_space")
