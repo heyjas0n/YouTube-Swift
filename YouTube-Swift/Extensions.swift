@@ -26,3 +26,41 @@ extension UIView {
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
     }
 }
+
+extension UIImageView {
+    
+    func loadImageUsingUrlString(urlString: NSString) {
+        // Set up the URL request
+        guard let url = URL(string: urlString as String) else {
+            print("Error: cannot create URL")
+            return
+        }
+        let urlRequest = URLRequest(url: url)
+        
+        // set up the session
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        
+        // make the request
+        let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
+            
+            if error != nil {
+                print(error as Any)
+                return
+            }
+            
+            self.image = UIImage(data: data!)
+            
+            let str = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            print(str as Any)
+        })
+        
+        task.resume()
+    }
+    
+}
+
+
+
+
+
