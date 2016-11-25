@@ -27,15 +27,29 @@ extension UIView {
     }
 }
 
-extension UIImageView {
+let imageCache = NSCache<AnyObject, AnyObject>()
+
+class CustomImageView: UIImageView {
+    
+    var imageUrlString: String?
     
     func loadImageUsingUrlString(urlString: NSString) {
-        // Set up the URL request
+        
+        imageUrlString = urlString as String
+        
         guard let url = URL(string: urlString as String) else {
             print("Error: cannot create URL")
             return
         }
+        
         let urlRequest = URLRequest(url: url)
+        
+        image = nil
+        
+        if let imageFromCache = imageCache.object(forKey: urlString) as? UIImage {
+            self.image = imageFromCache
+            return
+        }
         
         // set up the session
         let config = URLSessionConfiguration.default
@@ -44,15 +58,18 @@ extension UIImageView {
         // make the request
         let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
             
-            if error != nil {
-                print(error as Any)
-                return
+            DispatchQueue.main.async {
+                
+                let imageToCache = UIImage(data: data!)
+                
+                if self.imageUrlString! == urlString as String {
+                        self.image = imageToCache
+                }
+                
+                imageCache.setObject(imageToCache!, forKey: urlString)
+                
             }
             
-            self.image = UIImage(data: data!)
-            
-            let str = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-            print(str as Any)
         })
         
         task.resume()

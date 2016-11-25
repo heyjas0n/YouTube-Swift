@@ -29,10 +29,7 @@ class VideoCell: BaseCell {
         didSet {
             titleLabel.text = video?.title
             
-            
             setupThumbnailImage()
-            // thumbNailImageView.image = UIImage(named: (video?.thumbnailImageName)!)
-            
             setupProfileImage()
             
             if let channelName = video?.channel?.name, let numberOfViews = video?.numberOfViews {
@@ -73,16 +70,16 @@ class VideoCell: BaseCell {
         }
     }
     
-    let thumbNailImageView: UIImageView = {
-        let imageView = UIImageView()
+    let thumbNailImageView: CustomImageView = {
+        let imageView = CustomImageView()
         imageView.image = UIImage(named: "taylor_swift_blank_space")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
     }()
     
-    let userProfileImageView: UIImageView = {
-        let imageView = UIImageView()
+    let userProfileImageView: CustomImageView = {
+        let imageView = CustomImageView()
         imageView.image = UIImage(named: "taylor_swift_profile")
         imageView.layer.cornerRadius = 22
         imageView.layer.masksToBounds = true
