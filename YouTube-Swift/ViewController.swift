@@ -52,6 +52,7 @@ class VideoCell: UICollectionViewCell {
     let thumbNailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.blue
+        imageView.image = UIImage(named: "taylor_swift_blank_space")
         return imageView
     }()
     
@@ -67,10 +68,26 @@ class VideoCell: UICollectionViewCell {
         return view
     }()
     
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = UIColor.purple
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let subtitleTextView: UITextView = {
+        let textView = UITextView()
+        textView.backgroundColor = UIColor.red
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        return textView
+    }()
+    
     func setupViews() {
         addSubview(thumbNailImageView)
         addSubview(separatorView)
         addSubview(userProfileImageView)
+        addSubview(titleLabel)
+        addSubview(subtitleTextView)
         
         addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: thumbNailImageView)
         
@@ -81,6 +98,22 @@ class VideoCell: UICollectionViewCell {
         
         addConstraintsWithFormat(format: "H:|[v0]|", views: separatorView)
         
+        // Title Label Constraint. Make it underneath the thumbNailImageView
+        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal, toItem: thumbNailImageView, attribute: .bottom, multiplier: 1, constant: 8))
+        // Title Label Left Constraint
+        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 8)) // make the TitleLabel not cover up the left side where the user profile pic is
+        //Title Label Right Constraint
+        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal, toItem: thumbNailImageView, attribute: .right, multiplier: 1, constant: 0))
+        //not sure what this line does
+        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 20))
+        
+        // Subtitle Constraints
+        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1, constant: 8))
+        // SubtitleLeft Constraint
+        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 8)) // make the TitleLabel not cover up the left side where the user profile pic is
+        // Subtitle Right Constraint
+        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .right, relatedBy: .equal, toItem: thumbNailImageView, attribute: .right, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 20))
     }
     
     required init?(coder aDecoder: NSCoder) {
