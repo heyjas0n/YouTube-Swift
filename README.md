@@ -1,3 +1,3 @@
 # YouTube-Swift
 
-Using UICollectionViews to recreate YouTube's iOS app for MakeThatApp tutorial
+Using UICollectionViewControllers and UICollectionViews to recreate YouTube's iOS app for MakeThatApp tutorial
