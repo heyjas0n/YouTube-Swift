@@ -97,7 +97,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = (view.frame.width - 16 - 16) * 9 / 16 // Fancy formula for calculating cell height 16:9 ratio
-        return CGSize(width: collectionView.frame.width, height: height + 16 + 68) // 8 + 44 + 16 + v2(1)
+        return CGSize(width: collectionView.frame.width, height: height + 16 + 88) // 8 + 44 + 16 + v2(1) + 12 + 8 
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
