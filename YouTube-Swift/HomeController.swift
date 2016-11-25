@@ -28,6 +28,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: cellId)
         
+        collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0) // Menu Bar is 50 pixels tall, so we need to push collection view 50 pixels down
+        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0) // Fix scroll inserts also
+        
         setupMenuBar()
     }
     
