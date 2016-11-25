@@ -31,6 +31,9 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         addConstraintsWithFormat(format: "H:|[v0]|", views: collectionView)
         addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
         
+        let selectedIndexPath = IndexPath(item: 0, section: 0)
+        collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .left)
+        
         backgroundColor = UIColor.rgb(red: 230, green: 32, blue: 31)
     }
     
@@ -69,6 +72,18 @@ class MenuCell: BaseCell {
         iv.tintColor = UIColor.rgb(red: 91, green: 14, blue: 13)
         return iv
     }()
+    
+    override var isHighlighted: Bool {
+        didSet {
+            imageView.tintColor = isHighlighted ? UIColor.white : UIColor.rgb(red: 91, green: 14, blue: 13)
+        }
+    }
+    
+    override var isSelected: Bool {
+        didSet {
+            imageView.tintColor = isSelected ? UIColor.white : UIColor.rgb(red: 91, green: 14, blue: 13)
+        }
+    }
     
     override func setupViews() {
         super.setupViews()
